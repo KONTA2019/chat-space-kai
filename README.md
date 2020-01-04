@@ -1,24 +1,66 @@
-# README
+## users_infomationsテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|Email|string|null: false|
+|Email|string|null: false|
 
-Things you may want to cover:
+### Association
+- has_many :foreign_keys
 
-* Ruby version
 
-* System dependencies
+## foreign_keysテーブル
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: true|
+|user_name_id|integer|null: true, foreign_key: true|
+|group_name_id|integer|null: true, foreign_key: true|
+|comment_id|integer|null: true, foreign_key: true|
 
-* Database creation
+### Association
+- belongs_to :users_imformations
+- has_many :users_names
+- has_many :groups_names
+- has_many :comments
 
-* Database initialization
 
-* How to run the test suite
+## users_namesテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|user_name_id|integer|null: false, foreign_key: true|
+|user_name|string|null: false|
 
-* Deployment instructions
+### Association
+- belongs_to :users-informations
+- belongs_to :foreign-keys
 
-* ...
+
+## groups_namesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|gorup_name_id|integer|null: true, foreign_key: true|
+|group_name|string|null: true|
+
+### Association
+- belongs_to :users-informations
+- belongs_to :foreign-keys
+
+
+## commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|comment_id|integer|null: true, foreign_key: true|
+|comment|text|null: true|
+|date|text|null: true|
+
+### Association
+- belongs_to :users-informations
+- belongs_to :foreign-keys
