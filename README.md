@@ -27,8 +27,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user|reference|foreign_key: true|
+|group|reference|foreign_key: true|
 
 
 ### Association
@@ -40,8 +40,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|foreign_key: true|
-|group_id|integer|foreign_key: true|
+|user|reference|foreign_key: true|
+|group|reference|foreign_key: true|
 |content|string|null:true|
 |image|image|null:true|
 
