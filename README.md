@@ -1,24 +1,87 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|Email|string|null: false|
 
-Things you may want to cover:
+### Association
+- has_many :group_users
+- has_many :groups, through: :group_users
+- has_many :messages
 
-* Ruby version
 
-* System dependencies
+## groupsテーブル
 
-* Configuration
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
 
-* Database creation
+### Association
+- has_many :group_users
+- has_many :users, through: :group_users
+- has_many :messages
 
-* Database initialization
 
-* How to run the test suite
+## group_usersテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|user|reference|null:false,foreign_key: true|
+|group|reference|null:false,foreign_key: true|
 
-* Deployment instructions
 
-* ...
+### Association
+- belongs_to :user
+- belongs_to :group
+
+
+## messagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|reference|null:false,foreign_key: true|
+|group|reference|null:false,foreign_key: true|
+|content|string||
+|image|image||
+
+### Association
+- belongs_to :user
+- belongs_to :group
+
+
+
+
+
+
+
+<!---
+メンターよりいただいたテーブル名、カラム名と教わった内容
+
+users
+id,name,email
+
+groups
+id,name
+
+group_users
+id,user_id,group_id
+
+messages
+id,content,image,user_id,group_id
+
+belongs_toの後ろは単数
+
+foreign_key:falseはほぼ無い
+
+null:trueは生成した時にnullで良いものにそうする。nullの初期状態を許すからnull:tureでは無い
+
+user_idはuserテーブルにあるidのことなので新しくuser_idは作らなくて良い（自動生成）
+（→テーブルには全ての共通のidは無いと解釈できる（自分用）)
+
+
+2回目に教わった内容
+中間テーブルを経由するには下記の一行が必要となる
+has_many :    ,throuh:
+
+-->
