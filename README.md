@@ -2,12 +2,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |name|string|null: false|
 |Email|string|null: false|
 
 ### Association
 - has_many :group_users
+- has_many :groups, through:group_users
 - has_many :messages
 
 
@@ -15,11 +15,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |name|string|null: false|
 
 ### Association
 - has_many :group_users
+- has_many :users, through:group_users
 - has_many :messages
 
 
@@ -27,7 +27,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -41,9 +40,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|foreign_key: true|
+|group_id|integer|foreign_key: true|
 |content|string|null:true|
 |image|image|null:true|
 
@@ -53,8 +51,12 @@
 
 
 
+
+
+
+
 <!---
-メンターよりいただいたテーブル名、カラム名と教わった内容v
+メンターよりいただいたテーブル名、カラム名と教わった内容
 
 users
 id,name,email
@@ -76,5 +78,10 @@ null:trueは生成した時にnullで良いものにそうする。nullの初期
 
 user_idはuserテーブルにあるidのことなので新しくuser_idは作らなくて良い（自動生成）
 （→テーブルには全ての共通のidは無いと解釈できる（自分用）)
+
+
+2回目に教わった内容
+中間テーブルを経由するには下記の一行が必要となる
+has_many :    ,throuh:
 
 -->
