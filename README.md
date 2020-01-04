@@ -7,7 +7,7 @@
 
 ### Association
 - has_many :group_users
-- has_many :groups, through:group_users
+- has_many :groups, through: :group_users
 - has_many :messages
 
 
@@ -19,7 +19,7 @@
 
 ### Association
 - has_many :group_users
-- has_many :users, through:group_users
+- has_many :users, through: :group_users
 - has_many :messages
 
 
