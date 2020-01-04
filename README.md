@@ -1,66 +1,80 @@
-## users_infomationsテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
+|name|string|null: false|
 |Email|string|null: false|
-|Email|string|null: false|
 
 ### Association
-- has_many :foreign_keys
+- has_many :group_users
+- has_many :messages
 
 
-## foreign_keysテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|id|integer|null: true|
-|user_name_id|integer|null: true, foreign_key: true|
-|group_name_id|integer|null: true, foreign_key: true|
-|comment_id|integer|null: true, foreign_key: true|
-
-### Association
-- belongs_to :users_imformations
-- has_many :users_names
-- has_many :groups_names
-- has_many :comments
-
-
-## users_namesテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|user_name_id|integer|null: false, foreign_key: true|
-|user_name|string|null: false|
+|name|string|null: false|
 
 ### Association
-- belongs_to :users-informations
-- belongs_to :foreign-keys
+- has_many :group_users
+- has_many :messages
 
 
-## groups_namesテーブル
+## group_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|gorup_name_id|integer|null: true, foreign_key: true|
-|group_name|string|null: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
 
 ### Association
-- belongs_to :users-informations
-- belongs_to :foreign-keys
+- belongs_to :user
+- belongs_to :group
 
 
-## commentsテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|comment_id|integer|null: true, foreign_key: true|
-|comment|text|null: true|
-|date|text|null: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|content|string|null:true|
+|image|image|null:true|
 
 ### Association
-- belongs_to :users-informations
-- belongs_to :foreign-keys
+- belongs_to :user
+- belongs_to :group
+
+
+
+<!---
+メンターよりいただいたテーブル名、カラム名と教わった内容v
+
+users
+id,name,email
+
+groups
+id,name
+
+group_users
+id,user_id,group_id
+
+messages
+id,content,image,user_id,group_id
+
+belongs_toの後ろは単数
+
+foreign_key:falseはほぼ無い
+
+null:trueは生成した時にnullで良いものにそうする。nullの初期状態を許すからnull:tureでは無い
+
+user_idはuserテーブルにあるidのことなので新しくuser_idは作らなくて良い（自動生成）
+（→テーブルには全ての共通のidは無いと解釈できる（自分用）)
+
+-->
