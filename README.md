@@ -27,8 +27,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|foreign_key: true|
-|group|reference|foreign_key: true|
+|user|reference|null:false,foreign_key: true|
+|group|reference|null:false,foreign_key: true|
 
 
 ### Association
@@ -40,10 +40,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user|reference|foreign_key: true|
-|group|reference|foreign_key: true|
-|content|string|null:true|
-|image|image|null:true|
+|user|reference|null:false,foreign_key: true|
+|group|reference|null:false,foreign_key: true|
+|content|string||
+|image|image||
 
 ### Association
 - belongs_to :user
