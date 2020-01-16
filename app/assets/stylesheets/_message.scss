@@ -1,0 +1,31 @@
+// * {
+//   box-sizing: border-box;
+// }
+.messages{
+  height: calc(100vh - 190px);
+  box-sizing: border-box;
+  padding: 46px 40px;
+  overflow: scroll;
+  background-color: #fafafa;
+}
+
+.chat-main__message-list{
+  background-color: $siro3;
+  &__name{
+    padding: 35px 0px 12px 40px;
+    font-size: 16px;
+    display: flex;
+    color: $kuro1;
+    &__date{
+      font-size: 12px;
+      margin-left: 10px;
+      color: $haiiro2;
+    }
+  }
+  &__comment{
+    color: $kuro2;
+    padding-left: 40px;
+    font-size: 14px;
+    margin-bottom: 11px;
+  }
+}
