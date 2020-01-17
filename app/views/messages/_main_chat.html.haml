@@ -1,12 +1,11 @@
 .chat-main
   .chat-main__group-info
-    - current_user.groups.each do |group|
-      .chat-main__group-info__detail  
-        = link_to group_messages_path(group) do
-          .chat-main__group-info__detail__name
-            = group.name
-          .chat-main__group-info__detail__member
-            yamada
+    .chat-main__group-info__detail  
+      .chat-main__group-info__detail__name
+        = current_user.groups.name
+      .chat-main__group-info__detail__member
+        - @group.users.each do |user|
+          = user.name
     .chat-main__group-info__edit
       =link_to "Edit",edit_group_path(@group), class:"chat-main__group-info__edit_btn"  
 
