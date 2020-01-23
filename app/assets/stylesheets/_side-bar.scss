@@ -56,20 +56,25 @@
     overflow: scroll;
     &__list{
       color: $siro1;
-      display:flex;
+      // display:flex;
+      display: list-item;
       flex-direction:column;
       padding: 0px 20px 40px 20px;
       &__name{
         margin: 20px 0px 5px 0px;
-        display: inline-block;
+        // display: inline-block;
         font-size: 15px;
         color: $siro1;
       }
       &__comment{
-        display:inline-block;
+        // display:inline-block;
         font-size: 11px;
         color: $siro1;
       }
     }
   }
+}
+
+.side-bar__group__list a{
+  text-decoration: none;
 }
